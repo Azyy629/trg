@@ -1,189 +1,94 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>trg27569</title>
+    <meta http-equiv="refresh" content="3; url=https://trg27569.42web.io/">
+    <title>网站迁移通知</title>
     <style>
-        /* 全局基础重置与优雅居中 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            background: linear-gradient(145deg, #f9f3e8 0%, #fff3e0 100%);
-            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, 'Helvetica Neue', sans-serif;
-            padding: 1.5rem;
+            min-height: 100vh;
             margin: 0;
-            position: relative;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
-
-        /* 主卡片容器 —— 干净柔和 */
-        .card {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border-radius: 56px;
-            box-shadow: 0 30px 50px -20px rgba(140, 90, 40, 0.25),
-                        0 8px 20px rgba(0,0,0,0.03),
-                        inset 0 2px 4px rgba(255,245,235,0.8);
-            padding: 3rem 4rem 4rem 4rem;
+        .container {
             text-align: center;
-            border: 1px solid rgba(255, 235, 210, 0.6);
-            transition: all 0.2s ease;
-            max-width: 700px;
-            width: fit-content;
+            background: white;
+            padding: 50px 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-width: 500px;
         }
-
-        /* 主要字符 trg — 大气、手写感与现代感平衡 */
-        .trg-text {
-            font-size: 8rem;
-            font-weight: 700;
-            line-height: 1;
-            margin-bottom: 1rem;
-            letter-spacing: 8px;        /* 增加一点呼吸感 */
-            color: #3e2c1b;
-            text-shadow: 0 4px 12px rgba(160, 100, 40, 0.15),
-                         0 8px 18px rgba(255, 215, 175, 0.5),
-                         2px 6px 12px rgba(0,0,0,0.05);
-            font-family: 'Trebuchet MS', 'Quicksand', 'Poppins', system-ui, sans-serif;
-            user-select: none;
-            transition: transform 0.2s;
-            display: inline-block;
-            filter: drop-shadow(0 6px 8px #ffe1c0);
+        .icon {
+            font-size: 56px;
+            margin-bottom: 10px;
         }
-
-        /* 细微悬停效果让 trg 更生动 (可选) */
-        .trg-text:hover {
-            transform: scale(1.01);
-            text-shadow: 0 6px 16px #cb9e72;
-        }
-
-        /* 下方按钮 rgxz 专属样式 */
-        .rgxz-button {
-            background: #ae7a4c;          /* 陶土棕，和 trg 暖调呼应 */
-            border: none;
-            border-radius: 48px;
-            padding: 1.2rem 4.2rem;
-            font-size: 2.8rem;
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
             font-weight: 600;
-            color: #fef6e8;
-            letter-spacing: 6px;           /* 让 rgxz 四字母舒展开 */
-            cursor: pointer;
-            box-shadow: 0 18px 28px -12px #7b4f2e,
-                        0 6px 12px rgba(120, 70, 30, 0.2),
-                        inset 0 -2px 2px #e6c29b,
-                        inset 0 2px 4px #ffebd2;
-            transition: all 0.18s ease;
-            border: 1px solid #dbb48b;
-            margin-top: 1.2rem;
-            min-width: 280px;
-            backdrop-filter: blur(2px);
-            font-family: 'Segoe UI', 'Quicksand', 'Poppins', sans-serif;
-            line-height: 1.2;
-            outline: none;
+        }
+        .new-url {
+            color: #007bff;
+            font-weight: bold;
+            word-break: break-all;
+        }
+        .timer {
+            margin: 20px 0 10px;
+            font-size: 14px;
+            color: #888;
+        }
+        .manual-link {
             display: inline-block;
+            margin-top: 5px;
+            padding: 10px 28px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.2s;
         }
-
-        /* 悬停/点击效果 —— 更明显的互动反馈 */
-        .rgxz-button:hover {
-            background: #be8b5c;
-            box-shadow: 0 24px 34px -14px #7b4f2e, 0 8px 16px rgba(100, 60, 20, 0.25);
-            transform: translateY(-3px);
-            color: #ffffff;
-            border-color: #efcdab;
+        .manual-link:hover {
+            background: #0056b3;
         }
-
-        .rgxz-button:active {
-            transform: translateY(4px);
-            box-shadow: 0 8px 16px -6px #5f3f22,
-                        inset 0 4px 10px rgba(0,0,0,0.1);
-            background: #9d6d42;
-            transition: 0.05s;
-        }
-
-        /* 确保按钮内文字在窄屏不失衡 */
-        @media (max-width: 500px) {
-            .card {
-                padding: 2rem 1.8rem 2.8rem 1.8rem;
-                border-radius: 40px;
-            }
-            .trg-text {
-                font-size: 9rem;
-                letter-spacing: 4px;
-            }
-            .rgxz-button {
-                font-size: 2rem;
-                padding: 1rem 2.2rem;
-                letter-spacing: 4px;
-                min-width: 220px;
-            }
-        }
-
-        /* 极简装饰小点 —— 氛围感 */
-        .decor-dot {
-            width: 80px;
-            height: 20px;
-            background: rgba(215, 165, 110, 0.2);
-            border-radius: 100px;
-            margin: 28px auto 0 auto;
-            filter: blur(6px);
-        }
-
-        /* 辅助说明：视觉上告知链接打开 (可选但无侵入) */
-        .subtle-note {
-            margin-top: 28px;
-            font-size: 0.9rem;
-            color: #ad8b6b;
-            opacity: 0.5;
-            letter-spacing: 0.5px;
-            font-weight: 400;
+        .note {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #aaa;
         }
     </style>
 </head>
 <body>
-
-    <!-- 主要卡片区域：包含 trg 和按钮 rgxz -->
-    <div class="card">
-        <!-- 上方 trg27569 -->
-        <div class="trg-text" aria-label="trg">trg27569</div>
-
-        <!-- 下方按钮 “rgxz” 点击跳转指定url -->
-        <button class="rgxz-button" id="rgxzBtn">极域课堂管理软件阻止工具<button>
-
-        <!-- 纯装饰性元素，烘托氛围，不影响功能 -->
-        <div class="decor-dot"></div>
+    <div class="container">
+        <div class="icon">🚚</div>
+        <h1>网站已迁移</h1>
+        <p style="color: #555; margin: 5px 0 15px;">
+            本站已迁移至新地址：<br>
+            <span class="new-url">https://trg27569.42web.io/</span>
+        </p>
+        <div class="timer">⏳ 页面将在 <span id="countdown">3</span> 秒后自动跳转...</div>
+        <br>
+        <a href="https://trg27569.42web.io/" class="manual-link">立即前往新站</a>
+        <p class="note">若未自动跳转，请点击上方按钮</p>
     </div>
+
     <script>
-        (function() {
-            // 获取按钮元素
-            const btn = document.getElementById('rgxzBtn');
-            
-            // 目标链接：https://azyy629.github.io/trg/rgxz.html
-            // 加上 https:// 前缀确保正确的外部跳转 (根据要求直接打开)
-            const targetUrl = 'https://azyy629.github.io/trg/rgxz.html';
-
-            // 为按钮绑定点击事件 —— 打开链接 (新窗口/标签页)
-            btn.addEventListener('click', function() {
-                // 使用 window.open 在新标签页打开，相当于 _blank
-                // 同时兼容弹窗拦截策略：由用户点击触发没问题
-                window.open(targetUrl, '_blank', 'noopener,noreferrer');
-                // 也可使用 location.href 但会在当前页打开，根据常规预期，按钮通常新页面
-                // 如果希望当前页面跳转可将上面注释，改用下面一行：
-                // window.location.href = targetUrl;
-            });
-
-            // 附加：确保按钮的可访问性（键盘 Enter 也可以触发，按钮本身已经支持）
-            // 并且为按钮增加轻微的指示 (已经具备手型)
-            btn.style.cursor = 'pointer';
-        })();
+        // 倒计时逻辑
+        let seconds = 3;
+        const countdownEl = document.getElementById('countdown');
+        const timer = setInterval(() => {
+            seconds -= 1;
+            if (seconds > 0) {
+                countdownEl.textContent = seconds;
+            } else {
+                clearInterval(timer);
+                // 手动跳转（作为 meta refresh 的备份）
+                window.location.href = 'https://trg27569.42web.io/';
+            }
+        }, 1000);
     </script>
 </body>
 </html>
